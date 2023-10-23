@@ -23,7 +23,7 @@ let collectData = [];
 
 // 初始化資料
 function init() {
-    axios.get('https://demo-2o2s.onrender.com/views')
+    axios.get(`https://mingwu-json-server.onrender.com/views`)
         .then(function (response) {
             data = response.data;
             renderData();
@@ -57,7 +57,7 @@ function hideSightContent() {
 
 // 收藏資料卡
 function collected() {
-    axios.get(`https://demo-2o2s.onrender.com/600/users/${localStorage.getItem('SignUpId')}/collects`, {
+    axios.get(`https://mingwu-json-server.onrender.com/600/users/${localStorage.getItem('SignUpId')}/collects`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('SignUpToken')}`
         }
@@ -97,7 +97,7 @@ function cancelCollect() {
             alert('已刪除!')
         };
         let num = e.target.getAttribute('data-num');
-        axios.delete(`https://demo-2o2s.onrender.com/600/collects/${num}`, {
+        axios.delete(`https://mingwu-json-server.onrender.com/600/collects/${num}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('SignUpToken')}`
             }
@@ -114,7 +114,7 @@ function cancelCollect() {
 
 // 回到後台
 function tableData() {
-    axios.get('https://demo-2o2s.onrender.com/views')
+    axios.get('https://mingwu-json-server.onrender.com/views')
         .then(function (response) {
             data = response.data;
             renderTableData();
@@ -145,7 +145,7 @@ function addSightBtn() {
     addBtn.addEventListener('click', function (e) {
         e.preventDefault();
         if (addHeader.value !== '' || addContent.value !== '') {
-            axios.post(`https://demo-2o2s.onrender.com/views`, {
+            axios.post(`https://mingwu-json-server.onrender.com/views`, {
                 "name": addHeader.value,
                 "description": addContent.value
             })
@@ -170,7 +170,7 @@ function deleteSightF() {
             alert('已刪除!');
         };
         let num = e.target.getAttribute('data-num');
-        axios.delete(`https://demo-2o2s.onrender.com/views/${num}`)
+        axios.delete(`https://mingwu-json-server.onrender.com/views/${num}`)
             .then(function (response) {
                 console.log(response);
                 alert('已刪除!');
@@ -217,7 +217,7 @@ if (window.location.pathname.includes('/admin.html')) {
 
 // 個人測試用 
 function deleteUser(num) {
-    axios.delete(`https://demo-2o2s.onrender.com/users/${num}`)
+    axios.delete(`https://mingwu-json-server.onrender.com/users/${num}`)
         .then(function (response) {
             console.log(response.data);
         })

@@ -4,7 +4,7 @@ let editBtn = document.querySelector('.editBtn');
 let id = location.href.split('=')[1];
 
 function editData() {
-    axios.get(`https://demo-2o2s.onrender.com/views/${id}`)
+    axios.get(`https://mingwu-json-server.onrender.com/views/${id}`)
         .then(function (response) {
             editHeader.value = JSON.stringify(response.data.name).replace(/^"(.*)"$/, '$1');
             editContent.value = JSON.stringify(response.data.description).replace(/^"(.*)"$/, '$1');
@@ -18,7 +18,7 @@ editData();
 editBtn.addEventListener('click', function (e) {
     e.preventDefault();
     if (editHeader.value !== '' || editContent.value !== '') {
-        axios.patch(`https://demo-2o2s.onrender.com/views/${id}`, {
+        axios.patch(`https://mingwu-json-server.onrender.com/views/${id}`, {
             "name": editHeader.value,
             "description": editContent.value
         })

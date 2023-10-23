@@ -3,7 +3,7 @@ let id = location.href.split('=')[1];
 
 // 渲染db.json
 function showContent() {
-    axios.get(`https://demo-2o2s.onrender.com/views/${id}`)
+    axios.get(`https://mingwu-json-server.onrender.com/views/${id}`)
         .then(function (response) {
             data = response.data;
             content.textContent = JSON.stringify(response.data);
@@ -21,7 +21,7 @@ collection.addEventListener('click', function (e) {
     if (collection.textContent == '未收藏') {
         collection.textContent = '已收藏';
         // 收藏區增加資訊卡
-        axios.post(`https://demo-2o2s.onrender.com/600/users/${localStorage.getItem('SignUpId')}/collects`, {
+        axios.post(`https://mingwu-json-server.onrender.com/600/users/${localStorage.getItem('SignUpId')}/collects`, {
             "id": data.id,
             "name": data.name,
             "description": data.description
@@ -35,6 +35,7 @@ collection.addEventListener('click', function (e) {
                 collected();
             })
             .catch(function (error) {
+				console.log(localStorage.getItem('SignUpId'));
                 console.log(error.response);
             });
     } else {
